@@ -33,7 +33,7 @@ export default {
         this._draw();
     },
     _setupBuffer() {
-        var positionBuffer = this._gl.createBuffer();
+        const positionBuffer = this._gl.createBuffer();
         
         this._gl.bindBuffer(this._gl.ARRAY_BUFFER, positionBuffer);
         
@@ -46,27 +46,26 @@ export default {
         this._gl.bufferData(this._gl.ARRAY_BUFFER, new Float32Array(this._positions), this._gl.DYNAMIC_DRAW);
     },
     _setupVertexArray() {
-        var positionAttributeLocation = this._gl.getAttribLocation(this._program, "a_position");
+        const positionAttributeLocation = this._gl.getAttribLocation(this._program, "a_position");
         this._vertexArray = this._gl.createVertexArray();
         this._gl.bindVertexArray(this._vertexArray);
         this._gl.enableVertexAttribArray(positionAttributeLocation);
 
-        var size = 2;               // 2 components per iteration
-        var type = this._gl.FLOAT;  // the data is 32bit floats
-        var normalize = false;      // don't normalize the data
-        var stride = 0;             // 0 = move forward size * sizeof(type) each iteration to get the next position
-        var offset = 0;             // start at the beginning of the buffer
+        const size = 2;               // 2 components per iteration
+        const type = this._gl.FLOAT;  // the data is 32bit floats
+        const normalize = false;      // don't normalize the data
+        const stride = 0;             // 0 = move forward size * sizeof(type) each iteration to get the next position
+        const offset = 0;             // start at the beginning of the buffer
         this._gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset)
     },
     _draw() {
-        var primitiveType = this._gl.TRIANGLES;
-        var offset = 0;
-        var count = 3;
-        var aspectRatio = 9/16;
+        const primitiveType = this._gl.TRIANGLES;
+        const offset = 0;
+        const count = 3;
+        const aspectRatio = 9/16;
         this._gl.drawArrays(primitiveType, offset, count);
 
         let i = 0;
-        let j = 0;
         setInterval(() => {
             i += 0.02;
             
