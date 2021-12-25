@@ -69,14 +69,13 @@ export default {
         let j = 0;
         setInterval(() => {
             i += 0.02;
-            j += 0.01;
             
             this._positions = [
                 0, 0,
                 0, Math.sin(i),
                 aspectRatio * Math.cos(i), 0,
             ];
-            
+
             this._gl.bufferData(this._gl.ARRAY_BUFFER, new Float32Array(this._positions), this._gl.DYNAMIC_DRAW);
             this._gl.drawArrays(primitiveType, offset, count);
         }, 1000/60);
